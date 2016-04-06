@@ -43,22 +43,38 @@ router.get('/create-post', function (req, res, next) {
 });
 
 router.post('/save-post', function (req, res, next) {
-    var post = new Post(_.pick(req.body, _.pickSchema(Post, ['dateCreation', '_id'])));
-    post.dateCreation = new Date();
-    if (req.body.id != null && req.body.id != "") {
-        post._id = mongoose.Types.ObjectId(req.body.id);
-    }
-    post.save(function (err, inserted) {
-        if (inserted) {
-            res.redirect('create-post/?id=' + inserted._id.toString());
-        } else {
-            res.render('admin/sections/create-post', {
-                pageTitle: 'Создать новую запись',
-                layout: "admin/layouts/admin-layout"
+
+        if (req.body.id != null && req.body.id != "") {
+            Post.findOne({_id: req.body.id}, function (err, post) {
+                if (err || post == null) {
+                    res.redirect('create-post');
+                } else {
+                    post.header = req.body.header;
+                    _.merge(post, _.pick(req.body, _.pickSchema(Post, ['dateCreation', 'id'])));
+                    post.save(function (err, inserted) {
+                        if (inserted) {
+                            res.redirect('create-post/?id=' + inserted._id.toString());
+                        } else {
+                            res.redirect('create-post');
+                        }
+                    });
+                }
+
             });
         }
-    });
-})
+        else {
+            var post = new Post(_.pick(req.body, _.pickSchema(Post, ['dateCreation', 'id'])));
+            post.dateCreation = new Date();
+            post.save(function (err, inserted) {
+                if (inserted) {
+                    res.redirect('create-post/?id=' + inserted._id.toString());
+                } else {
+                    res.redirect('create-post');
+                }
+            });
+        }
+    }
+)
 ;
 
 
