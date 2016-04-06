@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/site-view');
 var admin = require('./routes/admin');
+var authenticate = require('./routes/authenticate');
 var compression = require('compression');
 var passport = require('passport');
 var User = require('./model/user');
@@ -21,7 +22,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.set('layout', 'layout');
-app.set('partials',  {
+app.set('partials', {
     leftmenu: "admin/sections/left-menu"
 });
 app.enable('view cache');//TODO: cahe
@@ -58,7 +59,7 @@ function requireLogin(req, res, next) {
 
     }
 }
-app.use('/admin/', admin);
+app.use('/admin/', admin,authenticate);
 
 app.use(compression());
 
