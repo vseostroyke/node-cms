@@ -1,0 +1,20 @@
+<div class="col-md-10">
+    <h1>Создать запись</h1>
+
+    <form role='form' action="save-post" method="post">
+        <div class="form-group">
+            <input class="form-control" type='text' name="permalink" placeholder='Постоянная ссылка'
+                   value='{{permalink}}'>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type='text' name="header" placeholder='H1' value='{{header}}'>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type='text' name="title" placeholder='Название записи' value='{{title}}'>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="text" placeholder='Содержание' value='{{content}}'></textarea>
+        </div>
+        <button class="btn btn-default" type='submit'>Сохранить</button>
+    </form>
+</div>

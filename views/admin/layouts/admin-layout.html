@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/stylesheets/admin/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/style.css">
+</head>
+<body>
+<img src="/images/logosm2.jpg" alt="Все о стройке" width="390" height="40" border="0"
+     style="margin-bottom: 16px;margin-left: 11px;">
+
+<div class="clearfix"></div>
+{{> leftmenu}}
+{{{ yield }}}
+<script src='/javascripts/build/node-project.min.js'></script>
+</body>
