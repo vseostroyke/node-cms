@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 require('../model/post');
-var userController = require('../controller/userController');
+var userController = require('../controller/siteViewController');
 var Post = mongoose.model('Post');
 
 
