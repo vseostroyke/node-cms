@@ -1,12 +1,12 @@
 <div class="col-md-10">
     <h1 class="page-header">Все записи</h1>
-    <table class="table table-hover">
+    <table class="table table-hover table-bordered">
         {{#posts}}
         <tr>
-            <td>{{header}}</td>
+            <td><a href="/admin/create-post/?id={{_id}}">{{header}}</a></td>
             <td>{{title}}</td>
             <td>{{permalink}}</td>
-            <td>{{dateCreated}}</td>
+            <td>{{dateCreation}}</td>
         </tr>
         {{/posts}}
     </table>

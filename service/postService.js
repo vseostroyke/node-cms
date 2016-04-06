@@ -15,7 +15,8 @@ module.exports = {
     },
 
     findAll: function (params, callback) {
-        Post.find(params, function (err, posts) {
+        var query = Post.find(params).limit(10);
+        query.exec(function (err, posts) {
             if (err) {
                 return console.error(err);
             }

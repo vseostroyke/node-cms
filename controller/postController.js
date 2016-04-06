@@ -19,7 +19,7 @@ module.exports = {
     },
 
     findAll: function (req, res) {
-        postService.findAll({}, function(err, posts){
+        postService.findAll({}, function (err, posts) {
             res.render('admin/sections/all-posts', {
                 posts: posts,
                 pageTitle: 'Все записи',
