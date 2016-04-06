@@ -5,7 +5,7 @@ var Post = mongoose.model('Post');
 
 module.exports = {
     findOne: function (req, res) {
-        postService.findOne({permalink: req.param.permalink}, function (err, results) {
+        postService.findOne({permalink: req.params.permalink}, function (err, results) {
             if (results == null) {
                 results = {header: "null1"};
             }

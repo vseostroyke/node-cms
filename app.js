@@ -4,8 +4,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/site-view');
-var admin = require('./routes/admin');
+var routes = require('./routes/view-router');
+var admin = require('./routes/admin-router');
 var authenticate = require('./routes/authenticate');
 var compression = require('compression');
 var passport = require('passport');

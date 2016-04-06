@@ -39,6 +39,11 @@ router.get('/create-post', function (req, res, next) {
 
 });
 
+router.get('/all-post', function (req, res, next) {
+    postController.findAll(req, res)    ;
+
+});
+
 router.post('/save-post', function (req, res, next) {
         postController.saveOrUpdate(req, res);
     }

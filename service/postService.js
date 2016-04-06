@@ -14,6 +14,15 @@ module.exports = {
         });
     },
 
+    findAll: function (params, callback) {
+        Post.find(params, function (err, posts) {
+            if (err) {
+                return console.error(err);
+            }
+            return callback(err, posts);
+        });
+    },
+
     saveOrUpdate: function (req, res, callback) {
         if (req.body.id != null && req.body.id != "") {
             this.findOne({_id: req.body.id}, function (err, post) {
