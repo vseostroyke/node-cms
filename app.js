@@ -47,11 +47,18 @@ app.use('/', routes);
 
 app.use(requireLogin);
 function requireLogin(req, res, next) {
-    if (req.user != null && req.originalUrl != '/admin/login' && req.originalUrl != '/admin/logout') {
+    if (req.user != null
+        && req.originalUrl != '/admin/login'
+        && req.originalUrl != '/admin/logout'
+        && req.originalUrl != '/admin/register'
+    ) {
         next(); // allow the next route to run
     } else {
         // require the user to log in
-        if (req.originalUrl == '/admin/login' || req.originalUrl == '/admin/logout') {
+        if (req.originalUrl == '/admin/login'
+            || req.originalUrl == '/admin/logout'
+            || req.originalUrl == '/admin/register'
+        ) {
             next()
         } else {
             res.redirect("/admin/login"); // or render a form, etc.                                 }
@@ -59,7 +66,7 @@ function requireLogin(req, res, next) {
 
     }
 }
-app.use('/admin/', admin,authenticate);
+app.use('/admin/', admin, authenticate);
 
 app.use(compression());
 

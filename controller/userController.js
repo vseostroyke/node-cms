@@ -1,18 +1,15 @@
+var userService = require('../service/userService');
 require('../model/post');
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 
-//TODO: rename to service
 module.exports = {
-    findOne: function (permalink, callback) {
-
-        Post.findOne({permalink: permalink}, function (err, post) {
-            if (err) return console.error(err);
-            if (post == null) {
-                callback(null, "null1");
-            } else {
-                callback(null, post.header);
-            }
+    findOne: function (req, res) {
+        userService.findOne(req.param.permalink, function (err, results) {
+            res.render('index', {
+                title: results,
+                evalResult: 'eval'
+            });
         });
     }
 };

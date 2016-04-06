@@ -1,7 +1,7 @@
 <div class="col-md-10">
     <h1>Создать запись</h1>
 
-    <form role='form' action="save-post" method="post">
+    <form role='form' action="/admin/save-post" method="post">
         <div class="form-group">
             <input class="form-control" type='text' name="permalink" placeholder='Постоянная ссылка'
                    value='{{permalink}}'>
@@ -13,8 +13,10 @@
             <input class="form-control" type='text' name="title" placeholder='Название записи' value='{{title}}'>
         </div>
         <div class="form-group">
-            <textarea class="form-control" name="text" placeholder='Содержание' value='{{content}}'></textarea>
+            <textarea class="form-control" name="text" placeholder='Содержание'>{{postContent}}</textarea>
         </div>
+
+        <input type='hidden' name="id" value='{{id}}'>
         <button class="btn btn-default" type='submit'>Сохранить</button>
     </form>
 </div>

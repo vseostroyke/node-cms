@@ -8,10 +8,10 @@ cms.createModel("Post", {
     title: {type: String, required: true},
     description: String,
     keywords: String,
-    content: String,
+    postContent: String,
     permalink: {type: String, required: true, unique: true},
     dateCreation: {type: Date, default: Date.now, required: true},
-    author: { type: mongoose.Schema.ObjectId, ref: 'User' },
+    author: {type: mongoose.Schema.ObjectId, ref: 'User'},
     status: {type: String, enum: ['DRAFT', 'PUBLISHED']},
     categories: [postCategory]
 });
